@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little Scrapbook ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --pink: #ff8fb1;
+    --pink-dark: #e66d93;
+    --cream: #fff8f1;
+    --paper: #fffdf8;
+    --text: #493b42;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 20%, #ffd6e5 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, #ffc7da 0 2px, transparent 3px),
+        #fceef3;
+    overflow-x: hidden;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255,255,255,.9);
+    padding: 24px 18px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo h1 {
+    font-family: "Pacifico", cursive;
+    color: var(--pink-dark);
+    font-size: 25px;
+}
+
+.logo p {
+    font-size: 11px;
+    opacity: .55;
+    margin-top: 4px;
+}
+
+.section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: #a58b94;
+    margin: 22px 5px 9px;
+}
+
+.tools {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.tool {
+    border: 0;
+    background: #fff;
+    padding: 12px 6px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: var(--text);
+    font-family: inherit;
+    transition: .2s;
+    box-shadow: 0 3px 12px rgba(170,100,120,.08);
+}
+
+.tool:hover {
+    transform: translateY(-2px);
+    background: #fff0f5;
+}
+
+.tool .icon {
+    display: block;
+    font-size: 23px;
+    margin-bottom: 4px;
+}
+
+.tool span:last-child {
+    font-size: 11px;
+}
+
+/* =========================
+   THEMES
+========================= */
+
+.themes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.theme {
+    width: 42px;
+    height: 42px;
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,.1);
+    transition: .2s;
+}
+
+.theme:hover {
+    transform: scale(1.1);
+}
+
+.theme-pink {
+    background: linear-gradient(135deg,#ffc1d8,#ff7fa8);
+}
+
+.theme-strawberry {
+    background: linear-gradient(135deg,#ffccd8,#ef456d);
+}
+
+.theme-lavender {
+    background: linear-gradient(135deg,#ddd0ff,#9b7cff);
+}
+
+.theme-ocean {
+    background: linear-gradient(135deg,#b9edff,#5ec9e9);
+}
+
+.theme-vintage {
+    background: linear-gradient(135deg,#f0dfb3,#b99468);
+}
+
+.theme-dark {
+    background: linear-gradient(135deg,#3b2732,#a95b78);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    padding: 25px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-family: "Caveat", cursive;
+    font-size: 34px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action {
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 13px;
+    background: white;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text);
+    box-shadow: 0 4px 15px rgba(0,0,0,.07);
+}
+
+.action:hover {
+    background: #fff0f5;
+}
+
+/* =========================
+   CANVAS
+========================= */
+
+.canvas-wrap {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.canvas {
+    position: relative;
+    width: min(850px, 100%);
+    min-height: 650px;
+    background:
+        linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,.35)),
+        #fffaf2;
+    border-radius: 7px;
+    box-shadow:
+        0 25px 60px rgba(120,75,90,.18),
+        0 4px 10px rgba(120,75,90,.08);
+    overflow: hidden;
+    transition: background .4s;
+}
+
+/* Paper texture */
+.canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .25;
+    background-image:
+        radial-gradient(#9d857e 0.5px, transparent .5px);
+    background-size: 8px 8px;
+}
+
+/* =========================
+   ELEMENTS
+========================= */
+
+.element {
+    position: absolute;
+    cursor: move;
+    user-select: none;
+    z-index: 5;
+    transform-origin: center;
+}
+
+.element.selected {
+    outline: 2px dashed var(--pink);
+    outline-offset: 5px;
+}
+
+.text-element {
+    font-family: "Caveat", cursive;
+    font-size: 38px;
+    color: #573e49;
+    white-space: nowrap;
+}
+
+.sticker {
+    font-size: 65px;
+    filter: drop-shadow(2px 4px 2px rgba(0,0,0,.08));
+}
+
+.photo {
+    width: 190px;
+    padding: 9px 9px 38px;
+    background: white;
+    box-shadow: 0 7px 20px rgba(70,40,50,.18);
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.photo::after {
+    content: "♡";
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Caveat";
+    font-size: 20px;
+    color: #ef799c;
+}
+
+/* Tape */
+.tape {
+    width: 105px;
+    height: 32px;
+    background: rgba(255,192,210,.65);
+    transform: rotate(-5deg);
+    box-shadow: 0 2px 5px rgba(0,0,0,.05);
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.welcome-card {
+    text-align: center;
+    opacity: .75;
+}
+
+.welcome-card .big {
+    font-family: "Pacifico";
+    color: #e99ab2;
+    font-size: clamp(35px,6vw,65px);
+}
+
+.welcome-card p {
+    font-family: "Caveat";
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+/* =========================
+   BOTTOM TOOLBAR
+========================= */
+
+.bottom-toolbar {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    padding: 7px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 35px rgba(70,40,50,.15);
+    z-index: 200;
+}
+
+.bottom-toolbar button {
+    border: 0;
+    background: transparent;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.bottom-toolbar button:hover {
+    background: #ffe9f0;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(50,30,40,.3);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: min(430px,100%);
+    background: #fffafc;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 30px 80px rgba(40,20,30,.2);
+}
+
+.modal-box h2 {
+    font-family: "Caveat";
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 100%;
+    border: 2px solid #f5dbe4;
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    outline: none;
+    font-family: inherit;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px) {
+
+    .app {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        height: auto;
+        border-right: 0;
+        border-top: 1px solid #f4dce5;
+        padding: 8px;
+    }
+
+    .logo,
+    .section-title,
+    .themes {
+        display: none;
+    }
+
+    .tools {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .tool {
+        background: transparent;
+        box-shadow: none;
+        padding: 4px 8px;
+    }
+
+    .tool .icon {
+        margin: 0;
+        font-size: 21px;
+    }
+
+    .tool span:last-child {
+        display: none;
+    }
+
+    .main {
+        padding: 15px;
+        padding-bottom: 100px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .actions .action {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .canvas {
+        min-height: 580px;
+    }
+
+    .bottom-toolbar {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h1>my scrapbook ♡</h1>
+            <p>a little place for memories</p>
+        </div>
+
+        <div class="section-title">create</div>
+
+        <div class="tools">
+
+            <button class="tool" onclick="addText()">
+                <span class="icon">✍🏻</span>
+                <span>Text</span>
+            </button>
+
+            <button class="tool" onclick="document.getElementById('photoInput').click()">
+                <span class="icon">📸</span>
+                <span>Photo</span>
+            </button>
+
+            <button class="tool" onclick="showStickers()">
+                <span class="icon">🎀</span>
+                <span>Sticker</span>
+            </button>
+
+            <button class="tool" onclick="addTape()">
+                <span class="icon">🧷</span>
+                <span>Tape</span>
+            </button>
+
+        </div>
+
+        <input
+            id="photoInput"
+            type="file"
+            accept="image/*"
+            hidden
+            onchange="uploadPhoto(event)"
+        >
+
+        <div class="section-title">themes</div>
+
+        <div class="themes">
+            <button class="theme theme-pink" onclick="changeTheme('pink')"></button>
+            <button class="theme theme-strawberry" onclick="changeTheme('strawberry')"></button>
+            <button class="theme theme-lavender" onclick="changeTheme('lavender')"></button>
+            <button class="theme theme-ocean" onclick="changeTheme('ocean')"></button>
+            <button class="theme theme-vintage" onclick="changeTheme('vintage')"></button>
+            <button class="theme theme-dark" onclick="changeTheme('dark')"></button>
+        </div>
+
+        <div class="section-title">stickers</div>
+
+        <div class="tools">
+            <button class="tool" onclick="addSticker('🎀')">
+                <span class="icon">🎀</span>
+                <span>Bow</span>
+            </button>
+
+            <button class="tool" onclick="addSticker('♡')">
+                <span class="icon">♡</span>
+                <span>Heart</span>
+            </button>
+
+            <button class="tool" onclick="addSticker('🌷')">
+                <span class="icon">🌷</span>
+                <span>Flower</span>
+            </button>
+
+            <button class="tool" onclick="addSticker('🧸')">
+                <span class="icon">🧸</span>
+                <span>Teddy</span>
+            </button>
+
+            <button class="tool" onclick="addSticker('🍓')">
+                <span class="icon">🍓</span>
+                <span>Berry</span>
+            </button>
+
+            <button class="tool" onclick="addSticker('✨')">
+                <span class="icon">✨</span>
+                <span>Stars</span>
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <div class="page-title">
+                    my little memories ✧
+                </div>
+
+                <small style="opacity:.55">
+                    click anything & make it yours ♡
+                </small>
+            </div>
+
+            <div class="actions">
+                <button class="action" onclick="saveScrapbook()">
+                    💾 Save
+                </button>
+
+                <button class="action" onclick="exportPNG()">
+                    📤 Export
+                </button>
+            </div>
+
+        </div>
+
+        <div class="canvas-wrap">
+
+            <div class="canvas" id="canvas">
+
+                <div class="welcome" id="welcome">
+                    <div class="welcome-card">
+
+                        <div class="big">
+                            hello, cutie ♡
+                        </div>
+
+                        <p>
+                            start creating your little scrapbook...
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- BOTTOM TOOLBAR -->
+
+<div class="bottom-toolbar">
+
+    <button onclick="addText()">T</button>
+
+    <button onclick="document.getElementById('photoInput').click()">📸</button>
+
+    <button onclick="addSticker('♡')">♡</button>
+
+    <button onclick="addSticker('✨')">✦</button>
+
+    <button onclick="addTape()">🧷</button>
+
+    <button onclick="deleteSelected()">🗑️</button>
+
+</div>
+
+<!-- STICKER MODAL -->
+
+<div class="modal" id="stickerModal">
+
+    <div class="modal-box">
+
+        <h2>choose your sticker ♡</h2>
+
+        <div
+            style="
+            display:grid;
+            grid-template-columns:repeat(5,1fr);
+            gap:10px;
+            "
+        >
+
+            <button class="tool" onclick="addSticker('🎀');closeModal()">🎀</button>
+            <button class="tool" onclick="addSticker('🧸');closeModal()">🧸</button>
+            <button class="tool" onclick="addSticker('🐰');closeModal()">🐰</button>
+            <button class="tool" onclick="addSticker('🐱');closeModal()">🐱</button>
+            <button class="tool" onclick="addSticker('🌷');closeModal()">🌷</button>
+
+            <button class="tool" onclick="addSticker('🌸');closeModal()">🌸</button>
+            <button class="tool" onclick="addSticker('🍓');closeModal()">🍓</button>
+            <button class="tool" onclick="addSticker('🍒');closeModal()">🍒</button>
+            <button class="tool" onclick="addSticker('☕');closeModal()">☕</button>
+            <button class="tool" onclick="addSticker('🎧');closeModal()">🎧</button>
+
+            <button class="tool" onclick="addSticker('💌');closeModal()">💌</button>
+            <button class="tool" onclick="addSticker('💿');closeModal()">💿</button>
+            <button class="tool" onclick="addSticker('📷');closeModal()">📷</button>
+            <button class="tool" onclick="addSticker('🦋');closeModal()">🦋</button>
+            <button class="tool" onclick="addSticker('⭐');closeModal()">⭐</button>
+
+            <button class="tool" onclick="addSticker('✨');closeModal()">✨</button>
+            <button class="tool" onclick="addSticker('☁️');closeModal()">☁️</button>
+            <button class="tool" onclick="addSticker('🌙');closeModal()">🌙</button>
+            <button class="tool" onclick="addSticker('🎞️');closeModal()">🎞️</button>
+            <button class="tool" onclick="addSticker('💗');closeModal()">💗</button>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button class="action" onclick="closeModal()">
+                close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   GLOBAL
+========================= */
+
+const canvas = document.getElementById("canvas");
+
+let selected = null;
+let elementCounter = 0;
+
+
+/* =========================
+   SELECT ELEMENT
+========================= */
+
+function selectElement(el) {
+
+    document.querySelectorAll(".element")
+        .forEach(x => x.classList.remove("selected"));
+
+    selected = el;
+
+    if(el) {
+        el.classList.add("selected");
+    }
+}
+
+
+/* =========================
+   DRAG SYSTEM
+========================= */
+
+function makeDraggable(el) {
+
+    let dragging = false;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    el.addEventListener("pointerdown", function(e) {
+
+        e.preventDefault();
+
+        selectElement(el);
+
+        dragging = true;
+
+        const rect = canvas.getBoundingClientRect();
+
+        offsetX =
+            e.clientX -
+            rect.left -
+            parseFloat(el.style.left);
+
+        offsetY =
+            e.clientY -
+            rect.top -
+            parseFloat(el.style.top);
+
+        el.setPointerCapture(e.pointerId);
+
+    });
+
+    el.addEventListener("pointermove", function(e) {
+
+        if(!dragging) return;
+
+        const rect = canvas.getBoundingClientRect();
+
+        let x =
+            e.clientX -
+            rect.left -
+            offsetX;
+
+        let y =
+            e.clientY -
+            rect.top -
+            offsetY;
+
+        x = Math.max(0, Math.min(x, canvas.clientWidth - 30));
+        y = Math.max(0, Math.min(y, canvas.clientHeight - 30));
+
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+
+    });
+
+    el.addEventListener("pointerup", function() {
+
+        dragging = false;
+
+    });
+
+}
+
+
+/* =========================
+   ADD TEXT
+========================= */
+
+function addText() {
+
+    const text = prompt(
+        "What do you want to write?",
+        "today was a good day ♡"
+    );
+
+    if(!text) return;
+
+    const el = document.createElement("div");
+
+    el.className = "element text-element";
+
+    el.innerText = text;
+
+    el.style.left =
+        Math.random() * 500 + 80 + "px";
+
+    el.style.top =
+        Math.random() * 400 + 70 + "px";
+
+    el.style.transform =
+        `rotate(${randomRotation()}deg)`;
+
+    el.dataset.id = ++elementCounter;
+
+    canvas.appendChild(el);
+
+    makeDraggable(el);
+
+    selectElement(el);
+
+    document.getElementById("welcome").style.display = "none";
+
+}
+
+
+/* =========================
+   ADD STICKER
+========================= */
+
+function addSticker(symbol) {
+
+    const el = document.createElement("div");
+
+    el.className = "element sticker";
+
+    el.innerText = symbol;
+
+    el.style.left =
+        Math.random() * 600 + 60 + "px";
+
+    el.style.top =
+        Math.random() * 450 + 50 + "px";
+
+    el.style.transform =
+        `rotate(${randomRotation()}deg)`;
+
+    el.dataset.id = ++elementCounter;
+
+    canvas.appendChild(el);
+
+    makeDraggable(el);
+
+    selectElement(el);
+
+    document.getElementById("welcome").style.display = "none";
+
+}
+
+
+/* =========================
+   ADD TAPE
+========================= */
+
+function addTape() {
+
+    const el = document.createElement("div");
+
+    el.className = "element tape";
+
+    el.style.left =
+        Math.random() * 600 + 50 + "px";
+
+    el.style.top =
+        Math.random() * 450 + 50 + "px";
+
+    el.style.transform =
+        `rotate(${randomRotation()}deg)`;
+
+    canvas.appendChild(el);
+
+    makeDraggable(el);
+
+    selectElement(el);
+
+}
+
+
+/* =========================
+   UPLOAD PHOTO
+========================= */
+
+function uploadPhoto(event) {
+
+    const file =
+        event.target.files[0];
+
+    if(!file) return;
+
+    const reader =
+        new FileReader();
+
+    reader.onload = function(e) {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "element photo";
+
+        wrapper.style.left =
+            Math.random() * 500 + 70 + "px";
+
+        wrapper.style.top =
+            Math.random() * 350 + 80 + "px";
+
+        wrapper.style.transform =
+            `rotate(${randomRotation()}deg)`;
+
+        const img =
+            document.createElement("img");
+
+        img.src = e.target.result;
+
+        wrapper.appendChild(img);
+
+        canvas.appendChild(wrapper);
+
+        makeDraggable(wrapper);
+
+        selectElement(wrapper);
+
+        document.getElementById("welcome").style.display = "none";
+
+    };
+
+    reader.readAsDataURL(file);
+
+    event.target.value = "";
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+function deleteSelected() {
+
+    if(!selected) return;
+
+    selected.remove();
+
+    selected = null;
+
+}
+
+
+/* =========================
+   KEYBOARD DELETE
+========================= */
+
+document.addEventListener("keydown", function(e) {
+
+    if(
+        (e.key === "Delete" ||
+        e.key === "Backspace") &&
+        selected &&
+        document.activeElement.tagName !== "INPUT"
+    ) {
+
+        deleteSelected();
+
+    }
+
+});
+
+
+/* =========================
+   ROTATION
+========================= */
+
+document.addEventListener("keydown", function(e) {
+
+    if(!selected) return;
+
+    if(e.key === "[") {
+
+        selected.style.transform =
+            "rotate(" +
+            (getRotation(selected) - 5) +
+            "deg)";
+
+    }
+
+    if(e.key === "]") {
+
+        selected.style.transform =
+            "rotate(" +
+            (getRotation(selected) + 5) +
+            "deg)";
+
+    }
+
+});
+
+
+function getRotation(el) {
+
+    const transform =
+        el.style.transform;
+
+    const match =
+        transform.match(/rotate\((-?\d+)/);
+
+    return match
+        ? Number(match[1])
+        : 0;
+
+}
+
+
+/* =========================
+   RANDOM ROTATION
+========================= */
+
+function randomRotation() {
+
+    return Math.floor(
+        Math.random() * 18
+    ) - 9;
+
+}
+
+
+/* =========================
+   THEMES
+========================= */
+
+function changeTheme(theme) {
+
+    const themes = {
+
+        pink: "#fffaf2",
+
+        strawberry: "#fff2f5",
+
+        lavender: "#f7f2ff",
+
+        ocean: "#effaff",
+
+        vintage: "#f4ead3",
+
+        dark: "#30252b"
+
+    };
+
+    canvas.style.background =
+        themes[theme];
+
+    if(theme === "dark") {
+
+        canvas.style.color = "#fff";
+
+    } else {
+
+        canvas.style.color =
+            "#493b42";
+
+    }
+
+}
+
+
+/* =========================
+   STICKER MODAL
+========================= */
+
+function showStickers() {
+
+    document
+        .getElementById("stickerModal")
+        .classList.add("active");
+
+}
+
+function closeModal() {
+
+    document
+        .getElementById("stickerModal")
+        .classList.remove("active");
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveScrapbook() {
+
+    localStorage.setItem(
+        "myScrapbook",
+        canvas.innerHTML
+    );
+
+    alert("Saved! ♡");
+
+}
+
+
+/* =========================
+   LOAD
+========================= */
+
+function loadScrapbook() {
+
+    const saved =
+        localStorage.getItem(
+            "myScrapbook"
+        );
+
+    if(!saved) return;
+
+    canvas.innerHTML = saved;
+
+    document
+        .querySelectorAll(".element")
+        .forEach(el => {
+
+            makeDraggable(el);
+
+            el.addEventListener(
+                "click",
+                () => selectElement(el)
+            );
+
+        });
+
+}
+
+
+/* =========================
+   EXPORT PNG
+========================= */
+
+async function exportPNG() {
+
+    /*
+      Simple browser export.
+      For production, use html2canvas.
+    */
+
+    alert(
+        "PNG export needs html2canvas. " +
+        "Add the library to enable it."
+    );
+
+}
+
+
+/* =========================
+   CLICK ELEMENT
+========================= */
+
+document.addEventListener("click", function(e) {
+
+    const element =
+        e.target.closest(".element");
+
+    if(element) {
+
+        selectElement(element);
+
+    }
+
+});
+
+
+/* =========================
+   START
+========================= */
+
+loadScrapbook();
+
+</script>
+
+</body>
+</html>
